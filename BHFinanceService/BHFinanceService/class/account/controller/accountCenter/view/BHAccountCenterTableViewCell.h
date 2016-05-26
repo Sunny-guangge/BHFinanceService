@@ -8,9 +8,17 @@
 
 #import "BHCommonTableViewCell.h"
 
+@protocol BHAccountCenterTableViewCellDelegate  <NSObject>
+
+- (void)clickAccountCenterTableViewCellButtonWithButton:(UIButton *)button;
+
+@end
+
 @class BHItem;
 @interface BHAccountCenterTableViewCell : BHCommonTableViewCell
 
 @property (nonatomic,strong) BHItem *item;
+
+@property (nonatomic,weak) id <BHAccountCenterTableViewCellDelegate>delegate;
 
 @end

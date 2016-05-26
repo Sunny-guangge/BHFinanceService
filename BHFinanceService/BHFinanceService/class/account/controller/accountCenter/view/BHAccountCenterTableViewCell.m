@@ -90,16 +90,26 @@
     
     if (_item.itemType == BHItemTypeTextField) {
         
-        [_textField setFrame:CGRectMake(spaceX, spaceY, self.width - spaceX * 2, height)];
+        [_textField setFrame:CGRectMake(spaceX, 0, self.width - spaceX * 2, self.height)];
         self.accessoryType = UITableViewCellAccessoryNone;
     }
     
     if (_item.itemType == BHItemTypeTextFieldGetCode) {
         
-        [_textField setFrame:CGRectMake(spaceX, spaceX, self.width - spaceX * 2 - 80, height)];
+        [_textField setFrame:CGRectMake(spaceX, 0, self.width - spaceX * 2 - 80, self.height)];
         [_codeButton setFrame:CGRectMake(CGRectGetMaxX(_textField.frame), spaceY, 80, height)];
         self.accessoryType = UITableViewCellAccessoryNone;
         
+    }
+    if (_item.itemType == BHItemTypeLabelWithoutJianTou) {
+        float maxW = self.width * 0.5;
+        
+        float lableWidth = [_titleLabel sizeThatFits:CGSizeMake(maxW, MAXFLOAT)].width;
+        [_titleLabel setFrame:CGRectMake(spaceX, spaceY, lableWidth, height)];
+        
+        [_detailLabel setFrame:CGRectMake(CGRectGetMaxX(_titleLabel.frame) + 20, spaceY, self.width - 28 - 20 - CGRectGetMaxX(_titleLabel.frame), height)];
+        
+        self.accessoryType = UITableViewCellAccessoryNone;
     }
 }
 
@@ -164,6 +174,9 @@
             
         case BHItemTypeTextFieldGetCode:
             
+            self.textField.placeholder = item.place;
+            
+            
             self.titleLabel.hidden = YES;
             self.hederImageView.hidden = YES;
             self.button.hidden = YES;
@@ -172,6 +185,18 @@
             self.codeButton.hidden = NO;
             
             break;
+        
+        case BHItemTypeLabelWithoutJianTou:
+            
+            self.titleLabel.text = item.title;
+            self.detailLabel.text = item.labelStr;
+            
+            self.titleLabel.hidden = NO;
+            self.hederImageView.hidden = YES;
+            self.button.hidden = YES;
+            self.detailLabel.hidden = NO;
+            self.textField.hidden = YES;
+            self.codeButton.hidden = YES;
             
         default:
             break;
@@ -212,7 +237,7 @@
 {
     if (_button == nil) {
         _button = [UIButton buttonWithType:UIButtonTypeCustom];
-//        [_button addTarget:self action:@selector(tableView:didSelectRowAtIndexPath:) forControlEvents:UIControlEventTouchUpInside];
+        [_button addTarget:self action:@selector(clickCellButton:) forControlEvents:UIControlEventTouchUpInside];
         [_button setBackgroundColor:[UIColor grayColor]];
         [_button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _button.layer.masksToBounds = YES;
@@ -236,6 +261,7 @@
     if (_codeButton == nil) {
         _codeButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_codeButton setTitle:@"获取验证码" forState:UIControlStateNormal];
+        _codeButton.titleLabel.font = [UIFont systemFontOfSize:12];
         [_codeButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
         [_codeButton addTarget:self action:@selector(didClickGetCodeButton) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -245,6 +271,13 @@
 - (void)didClickGetCodeButton
 {
     
+}
+
+- (void)clickCellButton:(UIButton *)button
+{
+    if ([self.delegate respondsToSelector:@selector(clickAccountCenterTableViewCellButtonWithButton:)])  {
+        [self.delegate clickAccountCenterTableViewCellButtonWithButton:button];
+    }
 }
 
 #pragma mark - UITextFieldDelegate

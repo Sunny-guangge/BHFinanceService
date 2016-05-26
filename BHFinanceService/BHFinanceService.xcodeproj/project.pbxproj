@@ -75,6 +75,7 @@
 		4F7766A81CF5A8430021D9F1 /* BHAboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7766A71CF5A8430021D9F1 /* BHAboutTableViewController.m */; };
 		4F7766AB1CF5A8B90021D9F1 /* BHFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7766AA1CF5A8B90021D9F1 /* BHFeedbackViewController.m */; };
 		4F7F46DD1CF2D3100074BBEE /* BHADViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7F46DC1CF2D3100074BBEE /* BHADViewController.m */; };
+		4FBE02A11CF6D26100F4BEB6 /* BHBindNewPhoneTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBE02A01CF6D26100F4BEB6 /* BHBindNewPhoneTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -233,6 +234,8 @@
 		4F7766AA1CF5A8B90021D9F1 /* BHFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHFeedbackViewController.m; sourceTree = "<group>"; };
 		4F7F46DB1CF2D3100074BBEE /* BHADViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHADViewController.h; sourceTree = "<group>"; };
 		4F7F46DC1CF2D3100074BBEE /* BHADViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHADViewController.m; sourceTree = "<group>"; };
+		4FBE029F1CF6D26100F4BEB6 /* BHBindNewPhoneTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHBindNewPhoneTableViewController.h; sourceTree = "<group>"; };
+		4FBE02A01CF6D26100F4BEB6 /* BHBindNewPhoneTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHBindNewPhoneTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -779,6 +782,8 @@
 				4F7766981CF5A4530021D9F1 /* BHMyBankCardTableViewController.m */,
 				4F77669A1CF5A4F50021D9F1 /* BHBindPhoneNumTableViewController.h */,
 				4F77669B1CF5A4F50021D9F1 /* BHBindPhoneNumTableViewController.m */,
+				4FBE029F1CF6D26100F4BEB6 /* BHBindNewPhoneTableViewController.h */,
+				4FBE02A01CF6D26100F4BEB6 /* BHBindNewPhoneTableViewController.m */,
 				4F77669D1CF5A5850021D9F1 /* BHTradeSecretTableViewController.h */,
 				4F77669E1CF5A5850021D9F1 /* BHTradeSecretTableViewController.m */,
 				4F7766A01CF5A6260021D9F1 /* BHLoginSecretTableViewController.h */,
@@ -959,6 +964,7 @@
 				4F7766901CF57CF60021D9F1 /* BHItem.m in Sources */,
 				4F4CB78F1CEEEE3A0087F9FD /* SDWebImageManager.m in Sources */,
 				4F7766931CF57F460021D9F1 /* BHAccountCenterTableViewCell.m in Sources */,
+				4FBE02A11CF6D26100F4BEB6 /* BHBindNewPhoneTableViewController.m in Sources */,
 				4F7766961CF5A39F0021D9F1 /* BHRealNameIdentifyTableViewController.m in Sources */,
 				4F4CB78C1CEEEE3A0087F9FD /* SDWebImageDecoder.m in Sources */,
 				4F4415DA1CF3EF81009B69F4 /* BHInvestListTableViewCell.m in Sources */,

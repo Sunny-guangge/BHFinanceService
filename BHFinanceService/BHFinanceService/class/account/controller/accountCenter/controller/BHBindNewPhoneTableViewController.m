@@ -1,52 +1,37 @@
 //
-//  BHBindPhoneNumTableViewController.m
+//  BHBindNewPhoneTableViewController.m
 //  BHFinanceService
 //
-//  Created by 王帅广 on 16/5/25.
+//  Created by 王帅广 on 16/5/26.
 //  Copyright © 2016年 sunny. All rights reserved.
 //
 
-#import "BHBindPhoneNumTableViewController.h"
-#import "BHItem.h"
+#import "BHBindNewPhoneTableViewController.h"
 #import "BHAccountCenterTableViewCell.h"
 #import "constant.h"
-#import "BHBindNewPhoneTableViewController.h"
+#import "BHItem.h"
 
-@interface BHBindPhoneNumTableViewController ()<BHAccountCenterTableViewCellDelegate>
+@interface BHBindNewPhoneTableViewController ()<BHAccountCenterTableViewCellDelegate>
 
 @property (nonatomic,strong) NSMutableArray *array;
 
 @end
 
-@implementation BHBindPhoneNumTableViewController
+@implementation BHBindNewPhoneTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = @"绑定手机号";
-    
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEHW, 80)];
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, SCREEHW, 20)];
-    titleLabel.textAlignment = NSTextAlignmentCenter;
-    titleLabel.font = [UIFont systemFontOfSize:14];
-    titleLabel.textColor = [UIColor grayColor];
-    titleLabel.text = @"原手机号码";
-    [view addSubview:titleLabel];
-    
-    UILabel *phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleLabel.frame)+5, SCREEHW, 40)];
-    phoneLabel.textAlignment = NSTextAlignmentCenter;
-    phoneLabel.font = [UIFont systemFontOfSize:25];
-    phoneLabel.textColor = [UIColor blackColor];
-    phoneLabel.text = @"188****8888";
-    [view addSubview:phoneLabel];
-    
-    self.tableView.tableHeaderView = view;
-    
     self.view.backgroundColor = [UIColor stringTOColor:BHAPPBackGroundColor];
     self.tableView.backgroundColor = [UIColor stringTOColor:BHAPPBackGroundColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
+    
+    self.title = @"绑定新手机";
 }
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -61,12 +46,14 @@
     if (_array == nil) {
         _array = [NSMutableArray array];
         
+        BHItem *item0 = [[BHItem alloc] initWithTitle:@"" placeHoleder:@"请填写11位手机号" text:@"" ItemType:BHItemTypeTextField];
         BHItem *item1 = [[BHItem alloc] initWithTitle:@"" placeHoleder:@"请输入验证码" text:@"" ItemType:BHItemTypeTextFieldGetCode];
         
         NSMutableArray *array1 = [NSMutableArray array];
+        [array1 addObject:item0];
         [array1 addObject:item1];
         
-        BHItem *item2 = [[BHItem alloc] initWithTitle:@"下一步" ItemType:BHItemTypeButton];
+        BHItem *item2 = [[BHItem alloc] initWithTitle:@"提交" ItemType:BHItemTypeButton];
         
         NSMutableArray *array2 = [NSMutableArray array];
         [array2 addObject:item2];
@@ -99,8 +86,11 @@
     
     cell.delegate = self;
     
+    NSMutableArray *arrrr = [self.array objectAtIndex:indexPath.section];
+    
     cell.topLineStyle = BHCellLineStyleNone;
-    cell.bottomLineStyle = BHCellLineStyleNone;
+    
+    cell.bottomLineStyle = indexPath.row < (arrrr.count-1) ? BHCellLineStyleFill : BHCellLineStyleNone;
     
     cell.item = [[self.array objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     
@@ -128,11 +118,10 @@
     return view;
 }
 
+
 - (void)clickAccountCenterTableViewCellButtonWithButton:(UIButton *)button
 {
-    BHBindNewPhoneTableViewController *newPhoneVC = [[BHBindNewPhoneTableViewController alloc] init];
-    
-    [self.navigationController pushViewController:newPhoneVC animated:YES];
+    NSLog(@"提交完成");
 }
 
 @end

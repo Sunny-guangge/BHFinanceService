@@ -14,6 +14,7 @@ typedef NS_ENUM(NSInteger,BHItemType) {
     BHItemTypeButton,
     BHItemTypeTextField,
     BHItemTypeTextFieldGetCode,
+    BHItemTypeLabelWithoutJianTou,
 };
 
 @interface BHItem : NSObject
@@ -32,12 +33,12 @@ typedef NS_ENUM(NSInteger,BHItemType) {
 
 @property (nonatomic,strong) NSString *text;
 
-- (id)initWithTitle:(NSString *)title labelStr:(NSString *)labelStr ItemType:(BHItemType)itemType;
+- (id)initWithTitle:(NSString *)title labelStr:(NSString *)labelStr ItemType:(BHItemType)itemType; //label
 
-- (id)initWithTitle:(NSString *)title headerURL:(NSString *)headerURL ItemType:(BHItemType)itemType;
+- (id)initWithTitle:(NSString *)title headerURL:(NSString *)headerURL ItemType:(BHItemType)itemType;//带头像的
 
-- (id)initWithTitle:(NSString *)buttonStr ItemType:(BHItemType)itemType;
+- (id)initWithTitle:(NSString *)buttonStr ItemType:(BHItemType)itemType; //只有一个button的
 
-- (id)initWithTitle:(NSString *)title placeHoleder:(NSString *)place text:(NSString *)text ItemType:(BHItemType)itemType;
+- (id)initWithTitle:(NSString *)title placeHoleder:(NSString *)place text:(NSString *)text ItemType:(BHItemType)itemType; //textview
 
 @end
