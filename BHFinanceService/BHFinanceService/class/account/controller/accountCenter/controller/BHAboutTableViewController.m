@@ -82,7 +82,8 @@
     }
     
     cell.topLineStyle = BHCellLineStyleNone;
-    cell.bottomLineStyle = BHCellLineStyleNone;
+    
+    cell.bottomLineStyle = indexPath.row < (self.array.count-1) ? BHCellLineStyleFill : BHCellLineStyleNone;
     
     cell.item = [self.array objectAtIndex:indexPath.row];
     

@@ -59,6 +59,14 @@
  */
 + (BOOL)checkPassWordIsCorrect:(NSString *)password;
 
+/**
+ *  检验身份证号码格式是否正确
+ *
+ *  @param NSString num身份证号码
+ *
+ *  @return YES 表示符合身份证号码规则
+ */
++ (BOOL)checkIDNumberIsCorrect:(NSString *)num;
 
 #pragma mark - 数字转换成汉字
 +(NSString *)translation:(NSString *)arebic;

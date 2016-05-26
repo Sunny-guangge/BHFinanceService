@@ -13,3 +13,5 @@
 #import "UIColor+BH.h"
 
 #import "UIView+BH.h"
+
+#import "NSString+BH.h"

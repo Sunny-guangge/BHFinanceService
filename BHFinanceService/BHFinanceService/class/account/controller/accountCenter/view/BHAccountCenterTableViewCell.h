@@ -10,7 +10,10 @@
 
 @protocol BHAccountCenterTableViewCellDelegate  <NSObject>
 
+@optional
 - (void)clickAccountCenterTableViewCellButtonWithButton:(UIButton *)button;
+
+- (void)accountCenterTextFieldDidEndEditing:(UITextField *)textField;
 
 @end
 
@@ -18,6 +21,10 @@
 @interface BHAccountCenterTableViewCell : BHCommonTableViewCell
 
 @property (nonatomic,strong) BHItem *item;
+
+@property (nonatomic,strong) UITextField *textField;
+
+@property (nonatomic,strong) UIButton *codeButton;
 
 @property (nonatomic,weak) id <BHAccountCenterTableViewCellDelegate>delegate;
 

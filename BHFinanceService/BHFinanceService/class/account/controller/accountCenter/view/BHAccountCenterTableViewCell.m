@@ -20,10 +20,6 @@
 
 @property (nonatomic,strong) UIButton *button;
 
-@property (nonatomic,strong) UITextField *textField;
-
-@property (nonatomic,strong) UIButton *codeButton;
-
 @end
 
 //不同类型的cell的高度不一样    带有头像的是 80      button 是 50   label的是44
@@ -293,6 +289,13 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if ([self.delegate respondsToSelector:@selector(accountCenterTextFieldDidEndEditing:)]) {
+        [self.delegate accountCenterTextFieldDidEndEditing:textField];
+    }
 }
 
 @end
