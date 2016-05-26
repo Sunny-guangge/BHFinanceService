@@ -96,7 +96,7 @@
         
         cell = [[BHAccountCenterTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"tableView"];
     }
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.delegate = self;
     
     cell.topLineStyle = BHCellLineStyleNone;

@@ -8,7 +8,6 @@
 
 #import "BHAccountCenterTableViewCell.h"
 #import "BHItem.h"
-#import "UIView+BH.h"
 #import "constant.h"
 
 @interface BHAccountCenterTableViewCell ()<UITextFieldDelegate>
@@ -89,14 +88,22 @@
     }
     
     if (_item.itemType == BHItemTypeTextField) {
+        float maxW = self.width * 0.5;
         
-        [_textField setFrame:CGRectMake(spaceX, 0, self.width - spaceX * 2, self.height)];
+        float lableWidth = [_titleLabel sizeThatFits:CGSizeMake(maxW, MAXFLOAT)].width;
+        [_titleLabel setFrame:CGRectMake(spaceX, spaceY, lableWidth, height)];
+        [_textField setFrame:CGRectMake(CGRectGetMaxX(_titleLabel.frame) + 5, 0, self.width - spaceX * 2 - CGRectGetMaxX(_titleLabel.frame) - 5, self.height)];
         self.accessoryType = UITableViewCellAccessoryNone;
     }
     
     if (_item.itemType == BHItemTypeTextFieldGetCode) {
         
-        [_textField setFrame:CGRectMake(spaceX, 0, self.width - spaceX * 2 - 80, self.height)];
+        float maxW = self.width * 0.5;
+        
+        float lableWidth = [_titleLabel sizeThatFits:CGSizeMake(maxW, MAXFLOAT)].width;
+        [_titleLabel setFrame:CGRectMake(spaceX, spaceY, lableWidth, height)];
+        
+        [_textField setFrame:CGRectMake(CGRectGetMaxX(_titleLabel.frame) + 5, 0, self.width - CGRectGetMaxX(_titleLabel.frame) - 5 - 80, self.height)];
         [_codeButton setFrame:CGRectMake(CGRectGetMaxX(_textField.frame), spaceY, 80, height)];
         self.accessoryType = UITableViewCellAccessoryNone;
         
@@ -162,8 +169,9 @@
             
             self.textField.placeholder = item.place;
             self.textField.text = item.text;
+            self.titleLabel.text = item.title;
             
-            self.titleLabel.hidden = YES;
+            self.titleLabel.hidden = NO;
             self.hederImageView.hidden = YES;
             self.button.hidden = YES;
             self.detailLabel.hidden = YES;
@@ -175,9 +183,10 @@
         case BHItemTypeTextFieldGetCode:
             
             self.textField.placeholder = item.place;
+            self.textField.text = item.text;
+            self.titleLabel.text = item.title;
             
-            
-            self.titleLabel.hidden = YES;
+            self.titleLabel.hidden = NO;
             self.hederImageView.hidden = YES;
             self.button.hidden = YES;
             self.detailLabel.hidden = YES;
