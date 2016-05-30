@@ -1,37 +1,37 @@
 //
-//  BHRegisterViewController.m
+//  BHForgetSecretTableViewController.m
 //  BHFinanceService
 //
-//  Created by 王帅广 on 16/5/20.
+//  Created by 王帅广 on 16/5/30.
 //  Copyright © 2016年 sunny. All rights reserved.
 //
 
-#import "BHRegisterViewController.h"
+#import "BHForgetSecretTableViewController.h"
 
-@interface BHRegisterViewController ()
+@interface BHForgetSecretTableViewController ()
 
 @end
 
-@implementation BHRegisterViewController
+@implementation BHForgetSecretTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.title = @"忘记密码";
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    //    self.navigationController.navigationBar.hidden = YES;
+    
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 /*
 #pragma mark - Navigation

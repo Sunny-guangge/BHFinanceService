@@ -15,6 +15,8 @@
 
 - (void)accountCenterTextFieldDidEndEditing:(UITextField *)textField;
 
+- (void)clickAccountCenterCellBackWhiteButton:(UIButton *)button;
+
 @end
 
 @class BHItem;

@@ -12,6 +12,7 @@ typedef NS_ENUM(NSInteger,BHItemType) {
     BHItemTypeUserHeader,
     BHItemTypeLabel,
     BHItemTypeButton,
+    BHItemTypeBackWhiteButton,
     BHItemTypeTextField,
     BHItemTypeTextFieldGetCode,
     BHItemTypeLabelWithoutJianTou,

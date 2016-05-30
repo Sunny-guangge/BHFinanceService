@@ -20,6 +20,8 @@
 
 @property (nonatomic,strong) UIButton *button;
 
+@property (nonatomic,strong) UIButton *backWhiteButton;
+
 @end
 
 //不同类型的cell的高度不一样    带有头像的是 80      button 是 50   label的是44
@@ -37,12 +39,14 @@
         [self addSubview:self.button];
         [self addSubview:self.textField];
         [self addSubview:self.codeButton];
+        [self addSubview:self.backWhiteButton];
         self.titleLabel.hidden = YES;
         self.detailLabel.hidden = YES;
         self.hederImageView.hidden = YES;
         self.button.hidden = YES;
         self.textField.hidden = YES;
         self.codeButton.hidden = YES;
+        self.backWhiteButton.hidden = YES;
     }
     return self;
 }
@@ -114,6 +118,11 @@
         
         self.accessoryType = UITableViewCellAccessoryNone;
     }
+    if (_item.itemType == BHItemTypeBackWhiteButton) {
+        [_backWhiteButton setFrame:CGRectMake(20, 10, self.width - 40, 40)];
+        self.accessoryType = UITableViewCellAccessoryNone;
+        self.backgroundColor = [UIColor stringTOColor:BHAPPBackGroundColor];
+    }
 }
 
 - (void)setItem:(BHItem *)item
@@ -133,6 +142,7 @@
             self.detailLabel.hidden = YES;
             self.textField.hidden = YES;
             self.codeButton.hidden = YES;
+            self.backWhiteButton.hidden = YES;
             
             break;
         case BHItemTypeLabel:
@@ -146,6 +156,7 @@
             self.detailLabel.hidden = NO;
             self.textField.hidden = YES;
             self.codeButton.hidden = YES;
+            self.backWhiteButton.hidden = YES;
             
             break;
         case BHItemTypeButton:
@@ -158,6 +169,7 @@
             self.detailLabel.hidden = YES;
             self.textField.hidden = YES;
             self.codeButton.hidden = YES;
+            self.backWhiteButton.hidden = YES;
             
             break;
             
@@ -173,6 +185,7 @@
             self.detailLabel.hidden = YES;
             self.textField.hidden = NO;
             self.codeButton.hidden = YES;
+            self.backWhiteButton.hidden = YES;
             
             break;
             
@@ -188,6 +201,7 @@
             self.detailLabel.hidden = YES;
             self.textField.hidden = NO;
             self.codeButton.hidden = NO;
+            self.backWhiteButton.hidden = YES;
             
             break;
         
@@ -202,7 +216,23 @@
             self.detailLabel.hidden = NO;
             self.textField.hidden = YES;
             self.codeButton.hidden = YES;
+            self.backWhiteButton.hidden = YES;
             
+            break;
+            
+        case BHItemTypeBackWhiteButton:
+            
+            [self.backWhiteButton setTitle:item.buttonStr forState:UIControlStateNormal];
+            
+            self.titleLabel.hidden = YES;
+            self.hederImageView.hidden = YES;
+            self.button.hidden = YES;
+            self.detailLabel.hidden = YES;
+            self.textField.hidden = YES;
+            self.codeButton.hidden = YES;
+            self.backWhiteButton.hidden = NO;
+            
+            break;
         default:
             break;
     }
@@ -251,6 +281,21 @@
     return _button;
 }
 
+- (UIButton *)backWhiteButton
+{
+    if (_backWhiteButton == nil) {
+        _backWhiteButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_backWhiteButton addTarget:self action:@selector(clickCellBackWhiteButton:) forControlEvents:UIControlEventTouchUpInside];
+        [_backWhiteButton setBackgroundColor:[UIColor stringTOColor:BHAPPBackGroundColor]];
+        [_backWhiteButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        _backWhiteButton.layer.masksToBounds = YES;
+        _backWhiteButton.layer.cornerRadius = 3;
+        _backWhiteButton.layer.borderWidth = 1;
+        _backWhiteButton.layer.borderColor = [UIColor blackColor].CGColor;
+    }
+    return _backWhiteButton;
+}
+
 - (UITextField *)textField
 {
     if (_textField == nil) {
@@ -282,6 +327,13 @@
 {
     if ([self.delegate respondsToSelector:@selector(clickAccountCenterTableViewCellButtonWithButton:)])  {
         [self.delegate clickAccountCenterTableViewCellButtonWithButton:button];
+    }
+}
+
+- (void)clickCellBackWhiteButton:(UIButton *)sender
+{
+    if ([self.delegate respondsToSelector:@selector(clickAccountCenterCellBackWhiteButton:)]) {
+        [self.delegate clickAccountCenterCellBackWhiteButton:sender];
     }
 }
 

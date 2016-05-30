@@ -33,8 +33,6 @@
 		4F4CB7531CEEDCDE0087F9FD /* BHFinanceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4CB7521CEEDCDE0087F9FD /* BHFinanceTableViewController.m */; };
 		4F4CB7561CEEDCF80087F9FD /* BHHomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4CB7551CEEDCF80087F9FD /* BHHomeTableViewController.m */; };
 		4F4CB75B1CEEDF440087F9FD /* login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F4CB75A1CEEDF440087F9FD /* login.storyboard */; };
-		4F4CB75E1CEEE02D0087F9FD /* BHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4CB75D1CEEE02D0087F9FD /* BHLoginViewController.m */; };
-		4F4CB7611CEEE0F40087F9FD /* BHRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4CB7601CEEE0F40087F9FD /* BHRegisterViewController.m */; };
 		4F4CB7651CEEEE320087F9FD /* WSGScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4CB7641CEEEE320087F9FD /* WSGScrollView.m */; };
 		4F4CB7881CEEEE3A0087F9FD /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4CB7681CEEEE3A0087F9FD /* MKAnnotationView+WebCache.m */; };
 		4F4CB7891CEEEE3A0087F9FD /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4CB76A1CEEEE3A0087F9FD /* NSData+ImageContentType.m */; };
@@ -52,6 +50,11 @@
 		4F4CB7951CEEEE3A0087F9FD /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4CB7831CEEEE3A0087F9FD /* UIImageView+HighlightedWebCache.m */; };
 		4F4CB7961CEEEE3A0087F9FD /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4CB7851CEEEE3A0087F9FD /* UIImageView+WebCache.m */; };
 		4F4CB7971CEEEE3A0087F9FD /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4CB7871CEEEE3A0087F9FD /* UIView+WebCacheOperation.m */; };
+		4F6645941CFC03E0003B8E9D /* BHPhoneNumberTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6645931CFC03E0003B8E9D /* BHPhoneNumberTableViewController.m */; };
+		4F6645971CFC082E003B8E9D /* BHLoginTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6645961CFC082E003B8E9D /* BHLoginTableViewController.m */; };
+		4F66459A1CFC0886003B8E9D /* BHRegisterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6645991CFC0886003B8E9D /* BHRegisterTableViewController.m */; };
+		4F66459D1CFC13D3003B8E9D /* BHForgetSecretTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F66459C1CFC13D3003B8E9D /* BHForgetSecretTableViewController.m */; };
+		4F6645A01CFC15C9003B8E9D /* BHNoteLoginTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F66459F1CFC15C9003B8E9D /* BHNoteLoginTableViewController.m */; };
 		4F74855A1CF810F90058D7E2 /* BHDrawCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7485591CF810F90058D7E2 /* BHDrawCircleView.m */; };
 		4F74855D1CF8113E0058D7E2 /* BHMyAssetTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F74855C1CF8113E0058D7E2 /* BHMyAssetTableViewController.m */; };
 		4F7766661CF539600021D9F1 /* BHTenderControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F77665D1CF539600021D9F1 /* BHTenderControlViewController.m */; };
@@ -150,10 +153,6 @@
 		4F4CB7541CEEDCF80087F9FD /* BHHomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHHomeTableViewController.h; sourceTree = "<group>"; };
 		4F4CB7551CEEDCF80087F9FD /* BHHomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHHomeTableViewController.m; sourceTree = "<group>"; };
 		4F4CB75A1CEEDF440087F9FD /* login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = login.storyboard; sourceTree = "<group>"; };
-		4F4CB75C1CEEE02D0087F9FD /* BHLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHLoginViewController.h; sourceTree = "<group>"; };
-		4F4CB75D1CEEE02D0087F9FD /* BHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHLoginViewController.m; sourceTree = "<group>"; };
-		4F4CB75F1CEEE0F40087F9FD /* BHRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHRegisterViewController.h; sourceTree = "<group>"; };
-		4F4CB7601CEEE0F40087F9FD /* BHRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHRegisterViewController.m; sourceTree = "<group>"; };
 		4F4CB7631CEEEE320087F9FD /* WSGScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSGScrollView.h; sourceTree = "<group>"; };
 		4F4CB7641CEEEE320087F9FD /* WSGScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSGScrollView.m; sourceTree = "<group>"; };
 		4F4CB7671CEEEE3A0087F9FD /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
@@ -189,6 +188,16 @@
 		4F4CB7851CEEEE3A0087F9FD /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		4F4CB7861CEEEE3A0087F9FD /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		4F4CB7871CEEEE3A0087F9FD /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		4F6645921CFC03E0003B8E9D /* BHPhoneNumberTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHPhoneNumberTableViewController.h; sourceTree = "<group>"; };
+		4F6645931CFC03E0003B8E9D /* BHPhoneNumberTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHPhoneNumberTableViewController.m; sourceTree = "<group>"; };
+		4F6645951CFC082E003B8E9D /* BHLoginTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHLoginTableViewController.h; sourceTree = "<group>"; };
+		4F6645961CFC082E003B8E9D /* BHLoginTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHLoginTableViewController.m; sourceTree = "<group>"; };
+		4F6645981CFC0886003B8E9D /* BHRegisterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHRegisterTableViewController.h; sourceTree = "<group>"; };
+		4F6645991CFC0886003B8E9D /* BHRegisterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHRegisterTableViewController.m; sourceTree = "<group>"; };
+		4F66459B1CFC13D3003B8E9D /* BHForgetSecretTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHForgetSecretTableViewController.h; sourceTree = "<group>"; };
+		4F66459C1CFC13D3003B8E9D /* BHForgetSecretTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHForgetSecretTableViewController.m; sourceTree = "<group>"; };
+		4F66459E1CFC15C9003B8E9D /* BHNoteLoginTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHNoteLoginTableViewController.h; sourceTree = "<group>"; };
+		4F66459F1CFC15C9003B8E9D /* BHNoteLoginTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHNoteLoginTableViewController.m; sourceTree = "<group>"; };
 		4F7485581CF810F90058D7E2 /* BHDrawCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHDrawCircleView.h; sourceTree = "<group>"; };
 		4F7485591CF810F90058D7E2 /* BHDrawCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHDrawCircleView.m; sourceTree = "<group>"; };
 		4F74855B1CF8113E0058D7E2 /* BHMyAssetTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHMyAssetTableViewController.h; sourceTree = "<group>"; };
@@ -629,10 +638,16 @@
 		4F4CB7491CEEDC400087F9FD /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				4F4CB75C1CEEE02D0087F9FD /* BHLoginViewController.h */,
-				4F4CB75D1CEEE02D0087F9FD /* BHLoginViewController.m */,
-				4F4CB75F1CEEE0F40087F9FD /* BHRegisterViewController.h */,
-				4F4CB7601CEEE0F40087F9FD /* BHRegisterViewController.m */,
+				4F6645951CFC082E003B8E9D /* BHLoginTableViewController.h */,
+				4F6645961CFC082E003B8E9D /* BHLoginTableViewController.m */,
+				4F66459E1CFC15C9003B8E9D /* BHNoteLoginTableViewController.h */,
+				4F66459F1CFC15C9003B8E9D /* BHNoteLoginTableViewController.m */,
+				4F6645981CFC0886003B8E9D /* BHRegisterTableViewController.h */,
+				4F6645991CFC0886003B8E9D /* BHRegisterTableViewController.m */,
+				4F6645921CFC03E0003B8E9D /* BHPhoneNumberTableViewController.h */,
+				4F6645931CFC03E0003B8E9D /* BHPhoneNumberTableViewController.m */,
+				4F66459B1CFC13D3003B8E9D /* BHForgetSecretTableViewController.h */,
+				4F66459C1CFC13D3003B8E9D /* BHForgetSecretTableViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -962,7 +977,6 @@
 				4F4CB7081CEED6330087F9FD /* AppDelegate.m in Sources */,
 				4F4CB7311CEED9750087F9FD /* NSString+BH.m in Sources */,
 				4F7766671CF539600021D9F1 /* BHTenderDetailViewController.m in Sources */,
-				4F4CB75E1CEEE02D0087F9FD /* BHLoginViewController.m in Sources */,
 				4F7766731CF56D470021D9F1 /* BHCashViewController.m in Sources */,
 				4F7766701CF56CEE0021D9F1 /* BHChargeViewController.m in Sources */,
 				4F77666D1CF54AAE0021D9F1 /* BHAccountHeaderView.m in Sources */,
@@ -972,6 +986,7 @@
 				4FBE02A11CF6D26100F4BEB6 /* BHBindNewPhoneTableViewController.m in Sources */,
 				4F7766961CF5A39F0021D9F1 /* BHRealNameIdentifyTableViewController.m in Sources */,
 				4F4CB78C1CEEEE3A0087F9FD /* SDWebImageDecoder.m in Sources */,
+				4F66459A1CFC0886003B8E9D /* BHRegisterTableViewController.m in Sources */,
 				4F4415DA1CF3EF81009B69F4 /* BHInvestListTableViewCell.m in Sources */,
 				4F7766681CF539600021D9F1 /* BHTenderMessageViewController.m in Sources */,
 				4F4CB7531CEEDCDE0087F9FD /* BHFinanceTableViewController.m in Sources */,
@@ -999,16 +1014,19 @@
 				4F4CB7381CEEDA040087F9FD /* BHConst.m in Sources */,
 				4F77669C1CF5A4F50021D9F1 /* BHBindPhoneNumTableViewController.m in Sources */,
 				4F4415EB1CF4552F009B69F4 /* BHTotalSumView.m in Sources */,
-				4F4CB7611CEEE0F40087F9FD /* BHRegisterViewController.m in Sources */,
 				4F4CB7931CEEEE3A0087F9FD /* UIImage+MultiFormat.m in Sources */,
 				4F7766A81CF5A8430021D9F1 /* BHAboutTableViewController.m in Sources */,
+				4F6645A01CFC15C9003B8E9D /* BHNoteLoginTableViewController.m in Sources */,
+				4F6645941CFC03E0003B8E9D /* BHPhoneNumberTableViewController.m in Sources */,
 				4F74855D1CF8113E0058D7E2 /* BHMyAssetTableViewController.m in Sources */,
 				4F4CB7911CEEEE3A0087F9FD /* UIButton+WebCache.m in Sources */,
 				4F4CB71F1CEED8990087F9FD /* BHCommonTableViewCell.m in Sources */,
 				4F74855A1CF810F90058D7E2 /* BHDrawCircleView.m in Sources */,
 				4F7766AB1CF5A8B90021D9F1 /* BHFeedbackViewController.m in Sources */,
 				4F77668D1CF5753A0021D9F1 /* BHAccountCenterTableViewController.m in Sources */,
+				4F66459D1CFC13D3003B8E9D /* BHForgetSecretTableViewController.m in Sources */,
 				4F4CB7881CEEEE3A0087F9FD /* MKAnnotationView+WebCache.m in Sources */,
+				4F6645971CFC082E003B8E9D /* BHLoginTableViewController.m in Sources */,
 				4F4CB78E1CEEEE3A0087F9FD /* SDWebImageDownloaderOperation.m in Sources */,
 				4F7766A21CF5A6260021D9F1 /* BHLoginSecretTableViewController.m in Sources */,
 				4F4CB7321CEED9750087F9FD /* UIColor+BH.m in Sources */,
