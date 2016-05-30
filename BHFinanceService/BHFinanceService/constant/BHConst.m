@@ -9,4 +9,6 @@
 #import "BHConst.h"
 
 
+NSString *const BHLoginURL = @"/app/login";
+
 

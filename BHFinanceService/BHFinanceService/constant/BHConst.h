@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+#define BHServerAdd @"http://test.ifsf.bankhui.com"
 
 
-
+#pragma mark - 登录&&注册
+extern NSString *const BHLoginURL;
 
