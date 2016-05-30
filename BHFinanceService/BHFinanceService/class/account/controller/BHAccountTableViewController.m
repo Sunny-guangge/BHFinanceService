@@ -12,7 +12,7 @@
 #import "BHCashViewController.h"
 #import "BHChargeViewController.h"
 #import "BHFundRecordViewController.h"
-#import "BHMyAssetViewController.h"
+#import "BHMyAssetTableViewController.h"
 #import "BHInvestProjectViewController.h"
 #import "BHAccountCenterTableViewController.h"
 
@@ -44,7 +44,12 @@
     [view addSubview:self.functionView];
     
     self.tableView.tableHeaderView = view;
+    
+    self.view.backgroundColor = [UIColor stringTOColor:BHAPPBackGroundColor];
+    
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    
+    self.tableView.backgroundColor = [UIColor stringTOColor:BHAPPBackGroundColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -60,25 +65,41 @@
         
         _dataArray = [NSMutableArray array];
         
+        NSMutableArray *array11 = [NSMutableArray array];
+        
         NSMutableArray *array1 = [[NSMutableArray alloc] initWithObjects:@"直投项目",@"more_icon_llwm",@"999999.99元", nil];
+        
+        NSMutableArray *array22 = [NSMutableArray array];
+        
         NSMutableArray *array2 = [[NSMutableArray alloc] initWithObjects:@"我的资产",@"more_icon_llwm", nil];
         NSMutableArray *array3 = [[NSMutableArray alloc] initWithObjects:@"优惠券",@"more_icon_llwm", nil];
         NSMutableArray *array4 = [[NSMutableArray alloc] initWithObjects:@"资产记录",@"more_icon_llwm", nil];
         NSMutableArray *array5 = [[NSMutableArray alloc] initWithObjects:@"邀请好友，可赚取额外收益",@"more_icon_llwm", nil];
         
-        [_dataArray addObject:array1];
-        [_dataArray addObject:array2];
-        [_dataArray addObject:array3];
-        [_dataArray addObject:array4];
-        [_dataArray addObject:array5];
+        [array11 addObject:array1];
+        
+        [array22 addObject:array2];
+        [array22 addObject:array3];
+        [array22 addObject:array4];
+        [array22 addObject:array5];
+        
+        [_dataArray addObject:array11];
+        [_dataArray addObject:array22];
     }
     return _dataArray;
 }
 
 #pragma mark - UITableViewDelegate & UITableViewDataSource
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return self.dataArray.count;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    NSMutableArray *arr = [self.dataArray objectAtIndex:section];
+    
+    return arr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -89,7 +110,7 @@
     
     if (cell == nil) {
         
-        if (indexPath.row == 0) {
+        if (indexPath.row == 0 && indexPath.section == 0) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
         }else
         {
@@ -102,12 +123,12 @@
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    cell.textLabel.text = [[self.dataArray objectAtIndex:indexPath.row] objectAtIndex:0];
+    cell.textLabel.text = [[[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] objectAtIndex:0];
     
-    if (indexPath.row == 0) {
-        cell.detailTextLabel.text = [[self.dataArray objectAtIndex:indexPath.row] objectAtIndex:2];
+    if (indexPath.row == 0 && indexPath.section == 0) {
+        cell.detailTextLabel.text = [[[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] objectAtIndex:2];
     }
-    cell.imageView.image = [UIImage imageNamed:[[self.dataArray objectAtIndex:indexPath.row] objectAtIndex:1]];
+    cell.imageView.image = [UIImage imageNamed:[[[self.dataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] objectAtIndex:1]];
     
     return cell;
 }
@@ -117,9 +138,24 @@
     return 44;
 }
 
+- (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UITableViewHeaderFooterView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"FotterView"];
+    if (view == nil) {
+        view = [[UITableViewHeaderFooterView alloc] initWithReuseIdentifier:@"FotterView"];
+        [view setBackgroundView:[UIView new]];
+    }
+    return view;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 20;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0) {
+    if (indexPath.row == 0 && indexPath.section == 0) {
         
         BHInvestProjectViewController *investVC = [[BHInvestProjectViewController alloc] init];
         
@@ -127,13 +163,13 @@
         
     }
     
-    if (indexPath.row == 1) {
-        BHMyAssetViewController *myAssetVC = [[BHMyAssetViewController alloc] init];
+    if (indexPath.row == 0 && indexPath.section == 1) {
+        BHMyAssetTableViewController *myAssetVC = [[BHMyAssetTableViewController alloc] init];
         
         [self.navigationController pushViewController:myAssetVC animated:YES];
     }
     
-    if (indexPath.row == 3) {
+    if (indexPath.row == 2 && indexPath.section == 1) {
         
         BHFundRecordViewController *fundVC = [[BHFundRecordViewController alloc] init];
         

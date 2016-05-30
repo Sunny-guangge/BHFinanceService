@@ -52,6 +52,8 @@
 		4F4CB7951CEEEE3A0087F9FD /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4CB7831CEEEE3A0087F9FD /* UIImageView+HighlightedWebCache.m */; };
 		4F4CB7961CEEEE3A0087F9FD /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4CB7851CEEEE3A0087F9FD /* UIImageView+WebCache.m */; };
 		4F4CB7971CEEEE3A0087F9FD /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4CB7871CEEEE3A0087F9FD /* UIView+WebCacheOperation.m */; };
+		4F74855A1CF810F90058D7E2 /* BHDrawCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7485591CF810F90058D7E2 /* BHDrawCircleView.m */; };
+		4F74855D1CF8113E0058D7E2 /* BHMyAssetTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F74855C1CF8113E0058D7E2 /* BHMyAssetTableViewController.m */; };
 		4F7766661CF539600021D9F1 /* BHTenderControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F77665D1CF539600021D9F1 /* BHTenderControlViewController.m */; };
 		4F7766671CF539600021D9F1 /* BHTenderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F77665F1CF539600021D9F1 /* BHTenderDetailViewController.m */; };
 		4F7766681CF539600021D9F1 /* BHTenderMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7766611CF539600021D9F1 /* BHTenderMessageViewController.m */; };
@@ -60,7 +62,6 @@
 		4F77666D1CF54AAE0021D9F1 /* BHAccountHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F77666C1CF54AAE0021D9F1 /* BHAccountHeaderView.m */; };
 		4F7766701CF56CEE0021D9F1 /* BHChargeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F77666F1CF56CEE0021D9F1 /* BHChargeViewController.m */; };
 		4F7766731CF56D470021D9F1 /* BHCashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7766721CF56D470021D9F1 /* BHCashViewController.m */; };
-		4F7766761CF5710F0021D9F1 /* BHMyAssetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7766751CF5710F0021D9F1 /* BHMyAssetViewController.m */; };
 		4F7766791CF571580021D9F1 /* BHFundRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7766781CF571580021D9F1 /* BHFundRecordViewController.m */; };
 		4F7766831CF573F90021D9F1 /* BHInvestProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7766821CF573F90021D9F1 /* BHInvestProjectViewController.m */; };
 		4F77668D1CF5753A0021D9F1 /* BHAccountCenterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F77668C1CF5753A0021D9F1 /* BHAccountCenterTableViewController.m */; };
@@ -188,6 +189,10 @@
 		4F4CB7851CEEEE3A0087F9FD /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		4F4CB7861CEEEE3A0087F9FD /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		4F4CB7871CEEEE3A0087F9FD /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		4F7485581CF810F90058D7E2 /* BHDrawCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHDrawCircleView.h; sourceTree = "<group>"; };
+		4F7485591CF810F90058D7E2 /* BHDrawCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHDrawCircleView.m; sourceTree = "<group>"; };
+		4F74855B1CF8113E0058D7E2 /* BHMyAssetTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHMyAssetTableViewController.h; sourceTree = "<group>"; };
+		4F74855C1CF8113E0058D7E2 /* BHMyAssetTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHMyAssetTableViewController.m; sourceTree = "<group>"; };
 		4F77665C1CF539600021D9F1 /* BHTenderControlViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHTenderControlViewController.h; sourceTree = "<group>"; };
 		4F77665D1CF539600021D9F1 /* BHTenderControlViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHTenderControlViewController.m; sourceTree = "<group>"; };
 		4F77665E1CF539600021D9F1 /* BHTenderDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHTenderDetailViewController.h; sourceTree = "<group>"; };
@@ -204,8 +209,6 @@
 		4F77666F1CF56CEE0021D9F1 /* BHChargeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHChargeViewController.m; sourceTree = "<group>"; };
 		4F7766711CF56D470021D9F1 /* BHCashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHCashViewController.h; sourceTree = "<group>"; };
 		4F7766721CF56D470021D9F1 /* BHCashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHCashViewController.m; sourceTree = "<group>"; };
-		4F7766741CF5710F0021D9F1 /* BHMyAssetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHMyAssetViewController.h; sourceTree = "<group>"; };
-		4F7766751CF5710F0021D9F1 /* BHMyAssetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHMyAssetViewController.m; sourceTree = "<group>"; };
 		4F7766771CF571580021D9F1 /* BHFundRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHFundRecordViewController.h; sourceTree = "<group>"; };
 		4F7766781CF571580021D9F1 /* BHFundRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHFundRecordViewController.m; sourceTree = "<group>"; };
 		4F7766811CF573F90021D9F1 /* BHInvestProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHInvestProjectViewController.h; sourceTree = "<group>"; };
@@ -538,10 +541,10 @@
 				4F77666F1CF56CEE0021D9F1 /* BHChargeViewController.m */,
 				4F7766711CF56D470021D9F1 /* BHCashViewController.h */,
 				4F7766721CF56D470021D9F1 /* BHCashViewController.m */,
-				4F7766741CF5710F0021D9F1 /* BHMyAssetViewController.h */,
-				4F7766751CF5710F0021D9F1 /* BHMyAssetViewController.m */,
 				4F7766771CF571580021D9F1 /* BHFundRecordViewController.h */,
 				4F7766781CF571580021D9F1 /* BHFundRecordViewController.m */,
+				4F74855B1CF8113E0058D7E2 /* BHMyAssetTableViewController.h */,
+				4F74855C1CF8113E0058D7E2 /* BHMyAssetTableViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -549,6 +552,8 @@
 		4F4CB7411CEEDC280087F9FD /* view */ = {
 			isa = PBXGroup;
 			children = (
+				4F7485581CF810F90058D7E2 /* BHDrawCircleView.h */,
+				4F7485591CF810F90058D7E2 /* BHDrawCircleView.m */,
 				4F77666B1CF54AAE0021D9F1 /* BHAccountHeaderView.h */,
 				4F77666C1CF54AAE0021D9F1 /* BHAccountHeaderView.m */,
 			);
@@ -997,8 +1002,10 @@
 				4F4CB7611CEEE0F40087F9FD /* BHRegisterViewController.m in Sources */,
 				4F4CB7931CEEEE3A0087F9FD /* UIImage+MultiFormat.m in Sources */,
 				4F7766A81CF5A8430021D9F1 /* BHAboutTableViewController.m in Sources */,
+				4F74855D1CF8113E0058D7E2 /* BHMyAssetTableViewController.m in Sources */,
 				4F4CB7911CEEEE3A0087F9FD /* UIButton+WebCache.m in Sources */,
 				4F4CB71F1CEED8990087F9FD /* BHCommonTableViewCell.m in Sources */,
+				4F74855A1CF810F90058D7E2 /* BHDrawCircleView.m in Sources */,
 				4F7766AB1CF5A8B90021D9F1 /* BHFeedbackViewController.m in Sources */,
 				4F77668D1CF5753A0021D9F1 /* BHAccountCenterTableViewController.m in Sources */,
 				4F4CB7881CEEEE3A0087F9FD /* MKAnnotationView+WebCache.m in Sources */,
@@ -1010,7 +1017,6 @@
 				4F4415E81CF4375E009B69F4 /* BHRecommandCollectionViewCell.m in Sources */,
 				4F7766661CF539600021D9F1 /* BHTenderControlViewController.m in Sources */,
 				4F4CB7501CEEDCB40087F9FD /* BHAccountTableViewController.m in Sources */,
-				4F7766761CF5710F0021D9F1 /* BHMyAssetViewController.m in Sources */,
 				4F4CB74D1CEEDC8B0087F9FD /* BHTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
