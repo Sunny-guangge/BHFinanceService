@@ -12,6 +12,7 @@
 #import "constant.h"
 #import "BHRegisterTableViewController.h"
 #import "BHNoteLoginTableViewController.h"
+#import "BHAccount.h"
 
 @interface BHPhoneNumberTableViewController ()<BHAccountCenterTableViewCellDelegate>
 
@@ -109,6 +110,8 @@
         
     }
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     cell.delegate = self;
     
     cell.item = [[self.array objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
@@ -131,16 +134,42 @@
     return footView;
 }
 
+#pragma mark - BHAccountCenterTableViewCellDelegate
 - (void)clickAccountCenterTableViewCellButtonWithButton:(UIButton *)button
 {
-//    BHNoteLoginTableViewController *noteVC = [[BHNoteLoginTableViewController alloc] init];
-//    
-//    [self.navigationController pushViewController:noteVC animated:YES];
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    
+    BHAccountCenterTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    
+    [BHAccount verifyUserPhone:cell.textField.text success:^(BHResopnse *response) {
+        
+        NSLog(@"%@",response);
+        
+    } failure:^(NSError *error) {
+        
+        NSLog(@"%@",error);
+        
+    }];
+    
+}
+
+- (void)accountCenterTextFieldDidEndEditing:(UITextField *)textField
+{
+    
+    
+    
+}
+
+- (void)enterNextViewController
+{
+    //    BHNoteLoginTableViewController *noteVC = [[BHNoteLoginTableViewController alloc] init];
+    //
+    //    [self.navigationController pushViewController:noteVC animated:YES];
     
     BHRegisterTableViewController *registerVC = [[BHRegisterTableViewController alloc] init];
     
     [self.navigationController pushViewController:registerVC animated:YES];
 }
-
 
 @end

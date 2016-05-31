@@ -11,4 +11,14 @@
 
 NSString *const BHLoginURL = @"/app/login";
 
+NSString *const BHLogOut = @"/app/logout";
 
+NSString *const BHLoginInfo = @"/app/loginInfo";
+
+NSString *const BHVerifyPhoneURL = @"/app/validate/check_mobile1";
+
+NSString *const BHLoginWithSMS = @"/app/smsLogin";
+
+NSString *const BHRegisterWithSMS = @"/app/smsRegister";
+
+NSString *const BHSendSMSCodeURL = @"/validate/send_mcode1_novcode";

@@ -10,6 +10,7 @@
 #import "BHAppAPIClient.h"
 #import "BHConst.h"
 #import "MJExtension.h"
+#import "BHResopnse.h"
 
 @implementation BHAccount
 
@@ -74,4 +75,97 @@
     
 }
 
++ (void)verifyUserPhone:(NSString *)phone success:(void(^)(BHResopnse *response))success failure:(void(^)(NSError *error))failure
+{
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    
+    [dic setObject:phone forKey:@"mobile"];
+    
+    [[BHAppAPIClient sharedClient] POST:BHVerifyPhoneURL parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        BHResopnse *response = [BHResopnse mj_objectWithKeyValues:responseObject];
+        
+        if (success) {
+            success(response);
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        if (failure) {
+            failure(error);
+        }
+        
+    }];
+}
+
++ (void)loginWithSMSWithPhone:(NSString *)phone SMSCode:(NSString *)code success:(void(^)(BHResopnse *response))success failure:(void(^)(NSError *error))failure
+{
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    
+    [dic setObject:phone forKey:@"mobile"];
+    [dic setObject:code forKey:@"mcode"];
+    
+    [[BHAppAPIClient sharedClient] POST:BHLoginWithSMS parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        BHResopnse *response = [BHResopnse mj_objectWithKeyValues:responseObject];
+        
+        if (success) {
+            success(response);
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
++ (void)registerWithPhone:(NSString *)phone SMSCode:(NSString *)code password:(NSString *)password success:(void(^)(BHResopnse *response))success failure:(void(^)(NSError *error))failure
+{
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    
+    [dic setObject:phone forKey:@""];
+    [dic setObject:code forKey:@""];
+    [dic setObject:password forKey:@""];
+    
+    [[BHAppAPIClient sharedClient] POST:BHRegisterWithSMS parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        BHResopnse *response = [BHResopnse mj_objectWithKeyValues:responseObject];
+        
+        if (success) {
+            success(response);
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
++ (void)sendSMSCodeWithPhone:(NSString *)phone purpose:(NSString *)purpose accessPort:(NSString *)access success:(void(^)(BHResopnse *response))success failure:(void(^)(NSError *error))failure
+{
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    
+    [dic setObject:phone forKey:@""];
+    [dic setObject:purpose forKey:@""];
+    [dic setObject:access forKey:@""];
+    
+    [[BHAppAPIClient sharedClient] POST:BHSendSMSCodeURL parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        BHResopnse *response = [BHResopnse mj_objectWithKeyValues:responseObject];
+        
+        if (success) {
+            success(response);
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
+
 @end
+
