@@ -10,4 +10,6 @@
 
 @interface BHRegisterTableViewController : BHTableViewController
 
+@property (nonatomic,strong) NSString *phoneNumber;
+
 @end

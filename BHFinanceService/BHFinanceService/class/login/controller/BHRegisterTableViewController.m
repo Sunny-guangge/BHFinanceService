@@ -10,6 +10,8 @@
 #import "constant.h"
 #import "BHItem.h"
 #import "BHAccountCenterTableViewCell.h"
+#import "BHAccount.h"
+#import "BHResopnse.h"
 
 @interface BHRegisterTableViewController ()<BHAccountCenterTableViewCellDelegate>
 
@@ -21,6 +23,9 @@
 {
     BOOL isSelect;
     UIButton *selectButton;
+    
+    NSInteger time;
+    NSTimer *nstimer;
 }
 
 - (void)viewDidLoad {
@@ -41,7 +46,7 @@
     phoneLabel.textAlignment = NSTextAlignmentCenter;
     phoneLabel.font = [UIFont systemFontOfSize:25];
     phoneLabel.textColor = [UIColor blackColor];
-    phoneLabel.text = @"188****8888";
+    phoneLabel.text = _phoneNumber;
     [view addSubview:phoneLabel];
     
     self.tableView.tableHeaderView = view;
@@ -112,6 +117,12 @@
     
     self.tableView.tableFooterView = footView;
     
+}
+
+- (void)dealloc
+{
+    [nstimer invalidate];
+    nstimer = nil;
 }
 
 - (void)didClickSelectButton
@@ -196,6 +207,8 @@
     
     cell.item = [[self.array objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     
+    [cell.codeButton addTarget:self action:@selector(clicksendCodeButton) forControlEvents:UIControlEventTouchUpInside];
+    
     return cell;
 }
 
@@ -227,7 +240,111 @@
 - (void)clickAccountCenterTableViewCellButtonWithButton:(UIButton *)button
 {
     NSLog(@"注册");
+    
+    NSIndexPath *indexPath1 = [NSIndexPath indexPathForRow:0 inSection:0];
+    NSIndexPath *indexPath2 = [NSIndexPath indexPathForRow:1 inSection:0];
+    
+    BHAccountCenterTableViewCell *cell1 = [self.tableView cellForRowAtIndexPath:indexPath1];
+    
+    BHAccountCenterTableViewCell *cell2 = [self.tableView cellForRowAtIndexPath:indexPath2];
+    
+    if ([[cell1.textField.text trimString] isEmptyString]) {
+        return;
+    }
+    if ([[cell2.textField.text trimString] isEmptyString]) {
+        return;
+    }
+    
+    [BHAccount registerWithPhone:@"" SMSCode:[cell1.textField.text trimString] password:[cell2.textField.text trimString] success:^(BHResopnse *response) {
+        
+        if (response.code == 1) {// 注册成功
+            
+        }
+        if (response.code == 2) {//手机号错误
+            
+        }
+        if (response.code == 3) {//密码错误
+            
+        }
+        if (response.code == 4) {//该手机号已经注册
+            
+        }
+        if (response.code == 5) {//验证码错误
+            
+        }
+        
+    } failure:^(NSError *error) {
+        
+        
+        
+    }];
 }
 
+- (void)clicksendCodeButton
+{
+    [BHAccount sendSMSCodeWithPhone:_phoneNumber purpose:@"8" accessPort:@"3" success:^(BHResopnse *response) {
+        
+        if (response.code == 1) {//发送验证码成功
+            nstimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateTime) userInfo:nil repeats:YES];
+            [nstimer fire];
+            //            [weakSelf buttonWithCountDown];
+            [MBProgressHUD showSuccess:@"发送成功"];
+        }
+        if (response.code == 2) {//手机号不能为空
+            [MBProgressHUD showError:@"手机号不能为空"];
+        }
+        if (response.code == 3) {//手机号格式错误
+            [MBProgressHUD showError:@"手机号格式错误"];
+        }
+        if (response.code == 4) {//功能参数不可为空
+            [MBProgressHUD showError:@"功能参数不可为空"];
+        }
+        if (response.code == 5) {//今天该功能发送数量已达到10条
+            [MBProgressHUD showError:@"今天该功能发送数量已达到10条"];
+        }
+        if (response.code == 6) {//一小时内该功能发送数量已达到3条
+            [MBProgressHUD showError:@"一小时内该功能发送数量已达到3条"];
+        }
+        if (response.code == 7) {//手机号[13167548790],发送短信过于频繁
+            [MBProgressHUD showError:@"手机号[13167548790],发送短信过于频繁"];
+        }
+        
+    } failure:^(NSError *error) {
+        
+        
+        
+    }];
+}
+
+- (void)updateTime
+{
+    if (time > 0) {
+        
+        NSString *strTime = [NSString stringWithFormat:@"%lds",(long)time];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:2 inSection:0];
+        
+        BHAccountCenterTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        
+        [cell.codeButton setTitle:strTime forState:UIControlStateDisabled];
+        cell.codeButton.enabled = NO;
+        
+        time--;
+        
+    }else
+    {
+        [nstimer invalidate];
+        
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:2 inSection:0];
+        
+        BHAccountCenterTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        
+        [cell.codeButton setTitle:@"获取验证码" forState:UIControlStateNormal];
+        
+        cell.codeButton.enabled = YES;
+        
+        time = 59;
+        return;
+    }
+}
 
 @end

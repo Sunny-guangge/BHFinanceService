@@ -9,7 +9,9 @@
 #import "BHAppAPIClient.h"
 #import "BHConst.h"
 
-static NSString * const AFAppDotNetAPIBaseURLString = @"http://test.ifsf.bankhui.com";
+//static NSString * const AFAppDotNetAPIBaseURLString = @"http://test.ifsf.bankhui.com";
+
+static NSString * const AFAppDotNetAPIBaseURLString = @"http://10.10.11.109:8080/IFS-web/";
 
 @implementation BHAppAPIClient
 

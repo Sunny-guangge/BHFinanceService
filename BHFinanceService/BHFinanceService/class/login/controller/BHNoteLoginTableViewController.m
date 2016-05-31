@@ -10,6 +10,8 @@
 #import "BHItem.h"
 #import "BHAccountCenterTableViewCell.h"
 #import "constant.h"
+#import "BHAccount.h"
+#import "BHResopnse.h"
 
 @interface BHNoteLoginTableViewController ()<BHAccountCenterTableViewCellDelegate>
 
@@ -18,7 +20,10 @@
 @end
 
 @implementation BHNoteLoginTableViewController
-
+{
+    NSInteger time;
+    NSTimer *nstimer;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -37,7 +42,7 @@
     phoneLabel.textAlignment = NSTextAlignmentCenter;
     phoneLabel.font = [UIFont systemFontOfSize:25];
     phoneLabel.textColor = [UIColor blackColor];
-    phoneLabel.text = @"188****8888";
+    phoneLabel.text = _phoneNumber;
     [view addSubview:phoneLabel];
     
     self.tableView.tableHeaderView = view;
@@ -54,6 +59,11 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
+- (void)dealloc
+{
+    [nstimer invalidate];
+    nstimer = nil;
+}
 
 - (NSMutableArray *)array
 {
@@ -101,6 +111,8 @@
     cell.topLineStyle = BHCellLineStyleNone;
     cell.bottomLineStyle = BHCellLineStyleNone;
     
+    [cell.codeButton addTarget:self action:@selector(didClickSendSMSCoe) forControlEvents:UIControlEventTouchUpInside];
+    
     cell.item = [[self.array objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     
     return cell;
@@ -127,9 +139,110 @@
     return view;
 }
 
+- (void)didClickSendSMSCoe
+{
+    
+    [BHAccount sendSMSCodeWithPhone:_phoneNumber purpose:@"27" accessPort:@"3" success:^(BHResopnse *response) {
+        
+        if (response.code == 1) {//发送验证码成功
+            nstimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateTime) userInfo:nil repeats:YES];
+            [nstimer fire];
+            //            [weakSelf buttonWithCountDown];
+            [MBProgressHUD showSuccess:@"发送成功"];
+        }
+        if (response.code == 2) {//手机号不能为空
+            [MBProgressHUD showError:@"手机号不能为空"];
+        }
+        if (response.code == 3) {//手机号格式错误
+            [MBProgressHUD showError:@"手机号格式错误"];
+        }
+        if (response.code == 4) {//功能参数不可为空
+            [MBProgressHUD showError:@"功能参数不可为空"];
+        }
+        if (response.code == 5) {//今天该功能发送数量已达到10条
+            [MBProgressHUD showError:@"今天该功能发送数量已达到10条"];
+        }
+        if (response.code == 6) {//一小时内该功能发送数量已达到3条
+            [MBProgressHUD showError:@"一小时内该功能发送数量已达到3条"];
+        }
+        if (response.code == 7) {//手机号[13167548790],发送短信过于频繁
+            [MBProgressHUD showError:@"手机号[13167548790],发送短信过于频繁"];
+        }
+        
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
+- (void)updateTime
+{
+    if (time > 0) {
+        
+        NSString *strTime = [NSString stringWithFormat:@"%lds",(long)time];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:2 inSection:0];
+        
+        BHAccountCenterTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        
+        [cell.codeButton setTitle:strTime forState:UIControlStateDisabled];
+        cell.codeButton.enabled = NO;
+        
+        time--;
+        
+    }else
+    {
+        [nstimer invalidate];
+        
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:2 inSection:0];
+        
+        BHAccountCenterTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        
+        [cell.codeButton setTitle:@"获取验证码" forState:UIControlStateNormal];
+        
+        cell.codeButton.enabled = YES;
+        
+        time = 59;
+        return;
+    }
+}
+
 - (void)clickAccountCenterTableViewCellButtonWithButton:(UIButton *)button
 {
     NSLog(@"短信验证码登录");
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    
+    BHAccountCenterTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    
+    if ([[cell.textField.text trimString] isEmptyString]) {
+        
+        return;
+    }
+    
+    [BHAccount loginWithSMSWithPhone:_phoneNumber SMSCode:[cell.textField.text trimString] success:^(BHResopnse *response) {
+        
+        if (response.code == 1) {//登录成功
+            
+        }
+        if (response.code == 2) {//手机号错误
+            [MBProgressHUD showError:@"手机号错误"];
+        }
+        if (response.code == 3) {//该手机号未注册
+            [MBProgressHUD showError:@"该手机号未注册"];
+        }
+        if (response.code == 4) {//验证码错误
+            [MBProgressHUD showError:@"验证码错误"];
+        }
+        if (response.code == 5) {//您没有授权!请联系客服
+            [MBProgressHUD showError:@"您没有授权!请联系客服"];
+        }
+        if (response.code == 6) {//该账户已冻结，请联系客服
+            [MBProgressHUD showError:@"该账户已冻结，请联系客服"];
+        }
+        
+    } failure:^(NSError *error) {
+        
+        
+    }];
 }
 
 @end

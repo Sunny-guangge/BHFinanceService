@@ -10,4 +10,6 @@
 
 @interface BHNoteLoginTableViewController : BHTableViewController
 
+@property (nonatomic,strong) NSString *phoneNumber;
+
 @end

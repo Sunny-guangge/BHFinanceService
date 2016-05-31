@@ -18,7 +18,7 @@
 /**
  *  code
  */
-@property (nonatomic,copy) NSNumber *code;
+@property (nonatomic,assign) NSInteger code;
 
 /**
  *  obj 返回的具体信息

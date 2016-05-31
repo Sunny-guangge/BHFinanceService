@@ -13,6 +13,7 @@
 #import "BHRegisterTableViewController.h"
 #import "BHNoteLoginTableViewController.h"
 #import "BHAccount.h"
+#import "BHResopnse.h"
 
 @interface BHPhoneNumberTableViewController ()<BHAccountCenterTableViewCellDelegate>
 
@@ -137,19 +138,54 @@
 #pragma mark - BHAccountCenterTableViewCellDelegate
 - (void)clickAccountCenterTableViewCellButtonWithButton:(UIButton *)button
 {
+    [self.view endEditing:YES];
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     
     BHAccountCenterTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     
+    if ([cell.textField.text isEmptyString]) {
+        
+        [self enterLoginNoteViewController];
+        
+        return;
+    }
+    
+    if (![NSString checkTel:[cell.textField.text trimString]]) {
+        
+        [MBProgressHUD showError:@"手机号给错误"];
+        
+        return;
+    }
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
     [BHAccount verifyUserPhone:cell.textField.text success:^(BHResopnse *response) {
         
         NSLog(@"%@",response);
         
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        if (response.code == 1) {//该手机号未注册
+            [self performSelector:@selector(enterNextRegisterViewController) withObject:nil afterDelay:0.8];
+        }
+        if (response.code == 2) {//手机号不能为空
+            [MBProgressHUD showError:@"手机号不能为空"];
+        }
+        if (response.code == 3) {//手机号格式错误
+            [MBProgressHUD showError:@"手机号给错误"];
+        }
+        if (response.code == 4) {//该手机号已经注册
+            [self performSelector:@selector(enterLoginNoteViewController) withObject:nil afterDelay:0.8];
+        }
+        
     } failure:^(NSError *error) {
         
-        NSLog(@"%@",error);
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         
+        NSLog(@"网络错误 - %@",error);
+        
+        [MBProgressHUD showError:@"网络错误，请重试"];
     }];
     
 }
@@ -161,15 +197,30 @@
     
 }
 
-- (void)enterNextViewController
+- (void)enterNextRegisterViewController
 {
-    //    BHNoteLoginTableViewController *noteVC = [[BHNoteLoginTableViewController alloc] init];
-    //
-    //    [self.navigationController pushViewController:noteVC animated:YES];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    
+    BHAccountCenterTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     
     BHRegisterTableViewController *registerVC = [[BHRegisterTableViewController alloc] init];
     
+    registerVC.phoneNumber = [cell.textField.text trimString];
+    
     [self.navigationController pushViewController:registerVC animated:YES];
+}
+
+- (void)enterLoginNoteViewController
+{
+    BHNoteLoginTableViewController *noteVC = [[BHNoteLoginTableViewController alloc] init];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    
+    BHAccountCenterTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    
+    noteVC.phoneNumber = [cell.textField.text trimString];
+    
+    
+    [self.navigationController pushViewController:noteVC animated:YES];
 }
 
 @end

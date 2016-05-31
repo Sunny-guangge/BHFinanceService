@@ -12,6 +12,8 @@
 #import "constant.h"
 #import "BHPhoneNumberTableViewController.h"
 #import "BHForgetSecretTableViewController.h"
+#import "BHAccount.h"
+#import "BHResopnse.h"
 
 @interface BHLoginTableViewController ()<BHAccountCenterTableViewCellDelegate>
 
@@ -166,12 +168,6 @@
         cell.topLineStyle = BHCellLineStyleNone;
     }
     
-    if (indexPath.section == 1) {
-        
-        
-        
-    }
-    
     return cell;
 }
 
@@ -190,6 +186,57 @@
 - (void)clickAccountCenterTableViewCellButtonWithButton:(UIButton *)button
 {
     NSLog(@"登录");
+    
+    [self.view endEditing:YES];
+    
+    NSIndexPath *indexPath1 = [NSIndexPath indexPathForRow:0 inSection:0];//用户名
+    
+    NSIndexPath *indexPath2 = [NSIndexPath indexPathForRow:1 inSection:0]; //密码
+    
+    BHAccountCenterTableViewCell *cell1 = [self.tableView cellForRowAtIndexPath:indexPath1];
+    
+    BHAccountCenterTableViewCell *cell2 = [self.tableView cellForRowAtIndexPath:indexPath2];
+    
+    if ([cell1.textField.text isEmptyString]) {
+        
+        return;
+    }
+    
+    if ([cell2.textField.text isEmptyString]) {
+        
+        return;
+    }
+    
+    
+    [BHAccount loginWithAccountName:cell1.textField.text passWord:cell2.textField.text responseSuccess:^(BHResopnse *response) {
+        
+        if (response.code == 1) {
+            
+            [MBProgressHUD showSuccess:@"登陆成功"];
+            
+        }
+        if (response.code == 2) {//用户名或密码错误
+            
+            [MBProgressHUD showError:@"用户名或密码错误"];
+            
+        }
+        if (response.code == 3) {//您没有授权!请联系客服
+            
+            [MBProgressHUD showError:@"您没有授权!请联系客服"];
+            
+        }
+        if (response.code == 4) {//该账户已冻结，请联系客服
+            
+            [MBProgressHUD showError:@"该账户已冻结，请联系客服"];
+            
+        }
+        
+    } failure:^(NSError *error) {
+        
+        NSLog(@"登陆时的网络错误：%@",error);
+        
+    }];
+    
 }
 
 - (void)accountCenterTextFieldDidEndEditing:(UITextField *)textField
