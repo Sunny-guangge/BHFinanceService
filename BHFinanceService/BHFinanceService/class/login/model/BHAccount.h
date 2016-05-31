@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "BHResopnse.h"
 
-@interface BHAccount : NSObject
+@interface BHAccount : NSObject<NSCoding>
 
 @property (nonatomic,copy) NSString *accountName;
 
 @property (nonatomic,copy) NSString *password;
+
++ (instancetype)accountWithDict:(NSDictionary *)dic;
 
 + (void)loginWithAccountName:(NSString *)account passWord:(NSString *)password responseSuccess:(void(^)(BHResopnse *response))success failure:(void(^)(NSError *error))failure;
 

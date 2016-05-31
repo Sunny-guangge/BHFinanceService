@@ -84,6 +84,7 @@
 		4F66462F1CFC3E76003B8E9D /* NSObject+MJKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6646231CFC3E76003B8E9D /* NSObject+MJKeyValue.m */; };
 		4F6646301CFC3E76003B8E9D /* NSObject+MJProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6646251CFC3E76003B8E9D /* NSObject+MJProperty.m */; };
 		4F6646311CFC3E76003B8E9D /* NSString+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6646271CFC3E76003B8E9D /* NSString+MJExtension.m */; };
+		4F6646341CFC43D8003B8E9D /* BHAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6646331CFC43D8003B8E9D /* BHAccountTool.m */; };
 		4F74855A1CF810F90058D7E2 /* BHDrawCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7485591CF810F90058D7E2 /* BHDrawCircleView.m */; };
 		4F74855D1CF8113E0058D7E2 /* BHMyAssetTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F74855C1CF8113E0058D7E2 /* BHMyAssetTableViewController.m */; };
 		4F7766661CF539600021D9F1 /* BHTenderControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F77665D1CF539600021D9F1 /* BHTenderControlViewController.m */; };
@@ -289,6 +290,8 @@
 		4F6646251CFC3E76003B8E9D /* NSObject+MJProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJProperty.m"; sourceTree = "<group>"; };
 		4F6646261CFC3E76003B8E9D /* NSString+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MJExtension.h"; sourceTree = "<group>"; };
 		4F6646271CFC3E76003B8E9D /* NSString+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MJExtension.m"; sourceTree = "<group>"; };
+		4F6646321CFC43D8003B8E9D /* BHAccountTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHAccountTool.h; sourceTree = "<group>"; };
+		4F6646331CFC43D8003B8E9D /* BHAccountTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHAccountTool.m; sourceTree = "<group>"; };
 		4F7485581CF810F90058D7E2 /* BHDrawCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHDrawCircleView.h; sourceTree = "<group>"; };
 		4F7485591CF810F90058D7E2 /* BHDrawCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHDrawCircleView.m; sourceTree = "<group>"; };
 		4F74855B1CF8113E0058D7E2 /* BHMyAssetTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHMyAssetTableViewController.h; sourceTree = "<group>"; };
@@ -732,6 +735,8 @@
 				4F66460D1CFC3B91003B8E9D /* BHUser.m */,
 				4F66460F1CFC3BC4003B8E9D /* BHAccount.h */,
 				4F6646101CFC3BC4003B8E9D /* BHAccount.m */,
+				4F6646321CFC43D8003B8E9D /* BHAccountTool.h */,
+				4F6646331CFC43D8003B8E9D /* BHAccountTool.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1176,6 +1181,7 @@
 				4F7766931CF57F460021D9F1 /* BHAccountCenterTableViewCell.m in Sources */,
 				4FBE02A11CF6D26100F4BEB6 /* BHBindNewPhoneTableViewController.m in Sources */,
 				4F7766961CF5A39F0021D9F1 /* BHRealNameIdentifyTableViewController.m in Sources */,
+				4F6646341CFC43D8003B8E9D /* BHAccountTool.m in Sources */,
 				4F4CB78C1CEEEE3A0087F9FD /* SDWebImageDecoder.m in Sources */,
 				4F66459A1CFC0886003B8E9D /* BHRegisterTableViewController.m in Sources */,
 				4F6646051CFC3867003B8E9D /* UIProgressView+AFNetworking.m in Sources */,
