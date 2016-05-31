@@ -68,4 +68,13 @@
  */
 + (void)sendSMSCodeWithPhone:(NSString *)phone purpose:(NSString *)purpose accessPort:(NSString *)access success:(void(^)(BHResopnse *response))success failure:(void(^)(NSError *error))failure;
 
+/**
+ *  退出登陆
+ *
+ *  @param success 成功的回调
+ *  @param failure 失败的回调
+ */
++ (void)logoutSuccess:(void(^)(BHResopnse *response))success failure:(void(^)(NSError *error))failure;
+
+
 @end

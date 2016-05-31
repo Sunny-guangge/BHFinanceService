@@ -187,6 +187,8 @@
 {
     NSLog(@"登录");
     
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
     [self.view endEditing:YES];
     
     NSIndexPath *indexPath1 = [NSIndexPath indexPathForRow:0 inSection:0];//用户名

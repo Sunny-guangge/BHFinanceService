@@ -166,6 +166,24 @@
     }];
 }
 
++ (void)logoutSuccess:(void(^)(BHResopnse *response))success failure:(void(^)(NSError *error))failure
+{
+    [[BHAppAPIClient sharedClient] POST:BHLogOut parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        BHResopnse *response = [BHResopnse mj_objectWithKeyValues:responseObject];
+        
+        if (success) {
+            success(response);
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        if (failure) {
+            failure(error);
+        }
+        
+    }];
+}
 
 @end
 

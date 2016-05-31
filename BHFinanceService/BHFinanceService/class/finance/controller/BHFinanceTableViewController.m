@@ -8,6 +8,8 @@
 
 #import "BHFinanceTableViewController.h"
 #import "BHInvestListTableViewCell.h"
+#import "BHLoginTableViewController.h"
+#import "BHNavigationViewController.h"
 
 @implementation BHFinanceTableViewController
 
@@ -16,6 +18,19 @@
     [super viewDidLoad];
     
     self.tableView.tableFooterView = [UIView new];
+    
+    UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"登陆" style:UIBarButtonItemStylePlain target:self action:@selector(didClickLogiinButton)];
+    
+    self.navigationItem.leftBarButtonItem = leftBarButtonItem;
+}
+
+- (void)didClickLogiinButton
+{
+    UIStoryboard *login = [UIStoryboard storyboardWithName:@"login" bundle:nil];
+    
+    BHNavigationViewController *loginVC = [login instantiateInitialViewController];
+    
+    [self presentViewController:loginVC animated:YES completion:nil];
 }
 
 #pragma mark - UITableViewDelegate & UITableViewDataSource

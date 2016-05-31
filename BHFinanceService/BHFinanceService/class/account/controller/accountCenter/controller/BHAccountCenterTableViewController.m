@@ -18,8 +18,10 @@
 #import "BHGestureSecretTableViewController.h"
 #import "BHAboutTableViewController.h"
 #import "BHFeedbackViewController.h"
+#import "BHAccount.h"
+#import "BHResopnse.h"
 
-@interface BHAccountCenterTableViewController ()
+@interface BHAccountCenterTableViewController ()<BHAccountCenterTableViewCellDelegate>
 
 @property (nonatomic,strong) NSMutableArray *array;
 
@@ -125,6 +127,8 @@
     
     cell.bottomLineStyle = indexPath.row < (arrrr.count-1) ? BHCellLineStyleFill : BHCellLineStyleNone;
     
+    cell.delegate = self;
+    
     if (indexPath.section == 2 && indexPath.row == 2) {
         cell.bottomLineStyle = BHCellLineStyleNone;
     }
@@ -202,6 +206,21 @@
         BHAboutTableViewController *aboutVC = [[BHAboutTableViewController alloc] init];
         [self.navigationController pushViewController:aboutVC animated:YES];
     }
+}
+
+- (void)clickAccountCenterTableViewCellButtonWithButton:(UIButton *)button
+{
+    NSLog(@"安全退出");
+    
+    [BHAccount logoutSuccess:^(BHResopnse *response) {
+        
+        if (response.code == 1) {//退出成功
+            
+        }
+        
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 @end
