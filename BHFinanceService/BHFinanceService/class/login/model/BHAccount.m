@@ -53,7 +53,7 @@
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     
     [dic setObject:account forKey:@"username"];
-    [dic setObject:password forKey:@"Password"];
+    [dic setObject:password forKey:@"password"];
     
     
     [[BHAppAPIClient sharedClient] POST:BHLoginURL parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

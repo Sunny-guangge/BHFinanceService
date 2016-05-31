@@ -14,6 +14,7 @@
 #import "BHForgetSecretTableViewController.h"
 #import "BHAccount.h"
 #import "BHResopnse.h"
+#import "BHSecret.h"
 
 @interface BHLoginTableViewController ()<BHAccountCenterTableViewCellDelegate>
 
@@ -153,6 +154,12 @@
         
     }
     
+    if (indexPath.row == 1 && indexPath.section == 0) {
+        
+        cell.textField.secureTextEntry = YES;
+        
+    }
+    
     cell.item = [[self.array objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -187,7 +194,7 @@
 {
     NSLog(@"登录");
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self dismissViewControllerAnimated:YES completion:nil];
     
     [self.view endEditing:YES];
     
@@ -209,8 +216,17 @@
         return;
     }
     
+    NSString *password;
     
-    [BHAccount loginWithAccountName:cell1.textField.text passWord:cell2.textField.text responseSuccess:^(BHResopnse *response) {
+    BHSecret *secret = [[BHSecret alloc] init];
+    
+    password = [secret md5SecretWithSecret:[cell2.textField.text trimString]];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [BHAccount loginWithAccountName:cell1.textField.text passWord:password responseSuccess:^(BHResopnse *response) {
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         if (response.code == 1) {
             
@@ -234,6 +250,10 @@
         }
         
     } failure:^(NSError *error) {
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        [MBProgressHUD showError:@"网络错误，请重试"];
         
         NSLog(@"登陆时的网络错误：%@",error);
         

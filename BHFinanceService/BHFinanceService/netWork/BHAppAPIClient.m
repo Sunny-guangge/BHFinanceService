@@ -11,7 +11,7 @@
 
 //static NSString * const AFAppDotNetAPIBaseURLString = @"http://test.ifsf.bankhui.com";
 
-static NSString * const AFAppDotNetAPIBaseURLString = @"http://10.10.11.109:8080/IFS-web/";
+static NSString * const AFAppDotNetAPIBaseURLString = @"http://10.10.11.109:8080/IFS-web";
 
 @implementation BHAppAPIClient
 
@@ -21,6 +21,13 @@ static NSString * const AFAppDotNetAPIBaseURLString = @"http://10.10.11.109:8080
     dispatch_once(&onceToken, ^{
         _sharedClient = [[BHAppAPIClient alloc] initWithBaseURL:[NSURL URLWithString:AFAppDotNetAPIBaseURLString]];
         _sharedClient.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+        _sharedClient.responseSerializer.acceptableContentTypes = [NSSet setWithArray:@[@"application/json",
+                                                                                  @"text/html",
+                                                                                  @"text/json",
+                                                                                  @"text/plain",
+                                                                                  @"text/javascript",
+                                                                                  @"text/xml",
+                                                                                  @"image/*"]];
     });
     
     return _sharedClient;
